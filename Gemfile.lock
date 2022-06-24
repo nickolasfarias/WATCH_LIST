@@ -238,6 +238,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    select2-rails (4.0.13)
     selenium-webdriver (4.2.1)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -310,6 +311,7 @@ DEPENDENCIES
   redis (~> 4.0)
   rspec-rails
   sass-rails (>= 6)
+  select2-rails
   selenium-webdriver (>= 4.0.0.rc1)
   simple_form!
   spring
