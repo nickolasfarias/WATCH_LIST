@@ -6,7 +6,8 @@ import "select2/dist/css/select2.min.css";
 export default class extends Controller {
   connect() {
     $(this.element).select2({
-      width: "100%"
+      width: "100%",
+      dropdownParent: $("#new_movie_modal")
     });
   }
 }
