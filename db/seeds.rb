@@ -16,7 +16,7 @@ pages.each_with_index do |page, i|
   movies_serialized = URI.open(url).read
   movies = JSON.parse(movies_serialized)
   movies["results"].each do |result|
-    Movie.create(title: result["title"], overview: result["overview"], poster_url: "https://image.tmdb.org/t/p/w300#{result['poster_path']}", rating: result["vote_average"])
+    Movie.create(title: result["title"], overview: result["overview"], poster_url: "https://image.tmdb.org/t/p/original#{result['backdrop_path']}", rating: result["vote_average"])
   end
   p "Finished"
 end
