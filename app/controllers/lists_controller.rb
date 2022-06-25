@@ -3,7 +3,7 @@ class ListsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @lists = List.all
+    @lists = List.where.not(user: current_user)
   end
 
   def show
