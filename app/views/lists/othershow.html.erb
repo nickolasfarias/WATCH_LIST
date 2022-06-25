@@ -12,7 +12,11 @@
   <div class="row my-2">
     <div class="d-flex align-items-center mb-3">
       <h3 class="me-2">By:</h3>
-      <%= cl_image_tag @list.user.photo.key, height:40, width:40 ,crop: :fill, class: "avatar dropdown-toggle me-2 mb-1", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% if  @list.user.photo.attached?%>
+        <%= cl_image_tag @list.user.photo.key, height:40, width:40 ,crop: :fill, class: "avatar dropdown-toggle me-2 mb-1", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% else %>
+        <img src=<%=asset_path('no_pic_profile.png')%> alt="" class="avatar dropdown-toggle me-2 mb-1" id="navbarDropdown" height="40" width="40">
+      <% end %>
       <h3><%= @list.user.first_name %> <%= @list.user.last_name %></h3>
     </div>
     <% @list.movies.each do |movie| %>

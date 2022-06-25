@@ -18,7 +18,11 @@
       <div class="co-12 col-sm-6 col-md-4 mb-3">
         <%= link_to other_show_path(list), class:"text-decoration-none" do %>
           <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) : asset_path('list_background.jpg') %>)">
-            <%= cl_image_tag list.user.photo.key, height:40, width:40 ,crop: :fill, class: "avatar dropdown-toggle index-icon-card me-2", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% if list.user.photo.attached? %>
+              <%= cl_image_tag list.user.photo.key, height:40, width:40 ,crop: :fill, class: "avatar dropdown-toggle index-icon-card"%>
+            <% else %>
+              <img src=<%=asset_path('no_pic_profile.png')%> alt="" class="avatar dropdown-toggle index-icon-card" id="navbarDropdown" height="40" width="40">
+            <% end %>
             <%= list.name %>
           </div>
         <% end %>
