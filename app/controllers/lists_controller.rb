@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:show, :destroy]
+  before_action :set_list, only: [:show, :destroy, :othershow]
   skip_before_action :authenticate_user!, only: :index
 
   def index
@@ -7,6 +7,11 @@ class ListsController < ApplicationController
   end
 
   def show
+    @bookmark = Bookmark.new
+    #@review = Review.new(list: @list)
+  end
+
+  def othershow
     @bookmark = Bookmark.new
     #@review = Review.new(list: @list)
   end
@@ -28,6 +33,10 @@ class ListsController < ApplicationController
   def destroy
     @list.destroy
     redirect_to lists_path
+  end
+
+  def my
+    @lists = List.where(user: current_user)
   end
 
   private
