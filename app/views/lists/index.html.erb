@@ -6,11 +6,11 @@
 </div>
 <div class="container py-5">
   <div class="d-flex align-items-center justify-content-between mb-3">
-    <h3 class="mb-0">List recommendations</h3>
+    <h3 class="mb-0">List suggestions</h3>
     <% if user_signed_in? %>
     <%= link_to "Create a movie list", new_list_path, class: "btn btn-flat" %>
     <% else %>
-    <h6>Log in if you want to create a list</h6>
+    <h6></h6>
     <% end %>
   </div>
   <div class="row">
@@ -18,6 +18,7 @@
       <div class="co-12 col-sm-6 col-md-4 mb-3">
         <%= link_to other_show_path(list), class:"text-decoration-none" do %>
           <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) : asset_path('list_background.jpg') %>)">
+            <%= cl_image_tag list.user.photo.key, height:40, width:40 ,crop: :fill, class: "avatar dropdown-toggle index-icon-card me-2", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <%= list.name %>
           </div>
         <% end %>
