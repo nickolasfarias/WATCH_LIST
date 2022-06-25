@@ -16,6 +16,11 @@
   </div>
 
   <div class="row my-2">
+    <div class="d-flex align-items-center mb-3">
+      <h3 class="me-2">By:</h3>
+      <%= cl_image_tag @list.user.photo.key, height:40, width:40 ,crop: :fill, class: "avatar dropdown-toggle me-2 mb-1", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <h3><%= @list.user.first_name %> <%= @list.user.last_name %></h3>
+    </div>
     <% @list.movies.each do |movie| %>
       <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
       <div class="col-12 col-sm-6 mb-4" data-aos="zoom-in">

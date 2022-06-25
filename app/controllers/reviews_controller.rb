@@ -3,6 +3,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @list = List.find(params[:list_id])
     @review.list = @list
+    @review.user_id = current_user.id
     if @review.save
       redirect_to other_show_path(@list)
     else
