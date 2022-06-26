@@ -3,7 +3,7 @@ class ListsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :othershow]
 
   def index
-    @lists = List.where.not(user: current_user)
+    @lists = List.where.not(user: current_user).order("RANDOM()")
   end
 
   def show
