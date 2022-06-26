@@ -3,10 +3,10 @@
 }
 
 .form-login {
-  background: white;
+  background: #7cbfc7;
   padding: 10px 20px;
   margin-top: 50px;
-  border-radius: 3px;
+  border-radius: 12px;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
   h2 {
     font-size: 25px;
@@ -18,4 +18,13 @@
     width: 100%;
     margin-bottom: 20px
   }
+}
+
+.new-list {
+  background-color:#7cbfc7;
+  border-radius: 12px;
+}
+
+.link-nav {
+  color:#064d55;
 }
