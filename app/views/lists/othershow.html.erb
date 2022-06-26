@@ -21,12 +21,12 @@
     </div>
     <% @list.movies.each do |movie| %>
       <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
-      <div class="col-12 col-sm-6 mb-4" data-aos="zoom-in">
-        <div class="card-movie rounded shadow h-100">
+      <div class="col-12 col-sm-6 mb-4" data-aos="flip-left">
+        <div class="card-movie rounded h-100">
           <%= image_tag movie.poster_url, alt: movie.title, class: "movie-img rounded-top" %>
           <div class="p-3 rounded-bottom d-flex flex-column">
             <strong><%= movie.title %> <span class="font-weight-normal" style="color:#4e4444;">• <%= movie.rating %> <i class="fas fa-star star-yellow"></i></span></strong>
-            <small style="color:black;"><%= movie.overview %></small>
+            <small style="color:black; font-weight:500;"><%= movie.overview %></small>
             <div class="d-flex align-items-end justify-content-between pt-4">
               <div>
                 <i class="fas fa-quote-left me-2"></i><small class="flex-grow-1"><%= bookmark.comment %></small>
@@ -44,22 +44,22 @@
     <div class="col-12 col-sm-6">
       <h3>Reviews</h3>
       <% if @list.reviews.empty? %>
-        <small><em class="text-muted">Be the first one to review this list</em></small>
+        <small><em style="color:#524848;">Be the first one to review this list</em></small>
       <% end %>
       <% @list.reviews.each do |review| %>
         <div>
           <% review.rating.times do %>
             <i class="fas fa-star star-yellow"></i>
           <% end %>
-          <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
-          <small>By: <%= User.find(review.user_id).first_name %> <%= User.find(review.user_id).last_name %></small>
+          <small><%= User.find(review.user_id).first_name %> <%= User.find(review.user_id).last_name %></small>
+          <small><em style="color:#524848;"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
           <p class="mb-0"><%= review.comment %></p>
         </div>
         <hr>
       <% end %>
     </div>
     <div class="col-12 col-sm-6">
-      <div class="bg-white rounded p-3">
+      <div class="review-form rounded p-3">
         <h5>Leave a review</h5>
         <%= simple_form_for [@list, @review] do |f| %>
           <%= f.input :comment, placeholder: "Add your review here..." %>
